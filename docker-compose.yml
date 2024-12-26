@@ -1,0 +1,21 @@
+services:
+  mqtt_yamaha:
+    command:
+      - "python"
+      - "./yamaha.py"
+    container_name: "mqtt_yamaha"
+    environment:
+      - "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      - "YAMAHA_IP=192.168.1.194"
+      - "MOSQUITTO_IP=192.168.1.206"
+      - "MOSQUITTO_PORT=1883"
+    hostname: "mqtt_yamaha"
+    image: "mqtt_yamaha"
+    ipc: "private"
+    logging:
+      driver: "journald"
+      options: {}
+    network_mode: "bridge"
+    restart: "unless-stopped"
+    working_dir: "/"
+version: "3.6"
